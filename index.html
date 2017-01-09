@@ -163,19 +163,19 @@
             
             e_music_player.play();
             
-            //检查音乐是否缓冲成功
-            setTimeout(function() {
-                var timeRanges = e_music_player.buffered;
-                var timeBuffered = timeRanges.end(timeRanges.length - 1);
-                var bufferPercent = timeBuffered /e_music_player.duration; 
-                console.log('music:'+bufferPercent);
+            // //检查音乐是否缓冲成功
+            // setTimeout(function() {
+            //     var timeRanges = e_music_player.buffered;
+            //     var timeBuffered = timeRanges.end(timeRanges.length - 1);
+            //     var bufferPercent = timeBuffered /e_music_player.duration; 
+            //     console.log('timeRanges:' + timeRanges.length + ',timeBuffered:' + timeBuffered + ',bufferPercent:' + bufferPercent);
 
-                if(isNaN(bufferPercent) || bufferPercent == 0)
-                {
-                    e_music_player.src = url;
-                    e_music_player.play();
-                }
-            },5000);
+            //     if(isNaN(bufferPercent) || bufferPercent == 0)
+            //     {
+            //         e_music_player.src = url;
+            //         e_music_player.play();
+            //     }
+            // },5000);
 
 
             if(objid('sound_image'))
