@@ -107,13 +107,15 @@
 
     <script src='https://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
     <script type="text/javascript">
+        var module_inits = [];
+
         if(typeof(objid) === "undefined")
+        {
+            var objid = function(id)
             {
-                var objid = function(id)
-                {
-                    return document.getElementById(id);
-                }
+                return document.getElementById(id);
             }
+        }
         var e_music_player = new Audio();
         
         function play_music() {
@@ -192,47 +194,40 @@
                 setTimeout(function(){objid("music_txt").style.visibility="hidden"}, 2500);
             }
         }
-        create_music();
-    </script>
-    <script type="text/javascript">
-         var module_inits = [];
+        
 
-            var upload_permission = true;
-            var atkname = 'huamei';
+        var upload_permission = true;
+        var atkname = 'huamei';
 
-            wx.config({
-                debug     : false,
-                appId     : 'wx235301d18ac389fa',
-                timestamp : 10000,
-                nonceStr  : 'hellohuamei',
-                signature : 'fb0466ccb40b5077590bafd0e9fe760d231fe65a',
-                jsApiList : [
-                    'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone', 'closeWindow', 'hideAllNonBaseMenuItem', 'showMenuItems', 'showAllNonBaseMenuItem', 'chooseImage', 'uploadImage']
-                });
-            
-            function load_init_modules()
+        wx.config({
+            debug     : false,
+            appId     : 'wx235301d18ac389fa',
+            timestamp : 10000,
+            nonceStr  : 'hellohuamei',
+            signature : 'fb0466ccb40b5077590bafd0e9fe760d231fe65a',
+            jsApiList : [
+                'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone', 'closeWindow', 'hideAllNonBaseMenuItem', 'showMenuItems', 'showAllNonBaseMenuItem', 'chooseImage', 'uploadImage']
+            });
+        
+        function load_init_modules() {
+            for(var i=0; i<module_inits.length; i++)
             {
-                for(var i=0; i<module_inits.length; i++)
-                {
-                    module_inits[i]();
-                }
+                module_inits[i]();
             }
+        }
 
-            function call_me(fun)
-            {
-                module_inits.push(fun);
-            }
+        function call_me(fun) {
+            module_inits.push(fun);
+        }
 
-            var ua = navigator.userAgent.toLowerCase();  
+        var ua = navigator.userAgent.toLowerCase();  
 
-            if(ua.match(/MicroMessenger/i) == 'micromessenger')
-            {  
-                wx.ready(load_init_modules);
-            }
-            else
-            {
-                onload = load_init_modules;
-            }
+        if(ua.match(/MicroMessenger/i) == 'micromessenger') {  
+            wx.ready(load_init_modules);
+        }
+        else {
+            onload = load_init_modules;
+        }
     </script>
     <script type="text/javascript">
 
@@ -249,22 +244,22 @@ for(var i = 0;i < 19;i ++) {
     slider_images_url[i] = 'https://daz10020.github.io/showP/images/' + (i + 1) + '.jpg';
 }
 
-var words = ['我愿落笔生花，守护你，直到白骨黄沙',
+var words = ['我愿落笔生花，<br>守护你，直到白骨黄沙',
 '倾心相遇，安暖相陪',
-'世间再多的情话，也抵不过一句：有你，这样，就够了',
-'宁为你一人冥顽痴傻，纵使辜负全世界的烟霞',
-'在所有人都说我很坚强时，只有你会对我说：别逞强',
-'青丝缠雪吟别一场暮色残年，流年逝水不负一世韶华情缘',
-'其实摩天轮下，放飞的孔明灯上，写的话我并没有忘记：清晨醒来，阳光还在，你还在，这就是我想要的生活',
-'独坐黄昏谁是伴，紫薇花对紫薇郎',
-'现在所有的努力，是为了给你一个更好的未来，虽然你要的很简单',
+'世间再多的情话，也抵不过一句：<br>有你，这样，就够了',
+'宁为你一人冥顽痴傻，<br>纵使辜负全世界的烟霞',
+'在所有人都说我很坚强时，<br>只有你会对我说：别逞强',
+'青丝缠雪吟别一场暮色残年，<br>流年逝水不负一世韶华情缘',
+'其实摩天轮下，放飞的孔明灯上，<br>写的话我并没有忘记：清晨醒来，阳光还在，你还在，<br>这就是我想要的生活',
+'独坐黄昏谁是伴，<br>紫薇花对紫薇郎',
+'现在所有的努力，<br>是为了给你一个更好的未来，<br>虽然你要的很简单',
 '琴瑟在御，莫不静好',
-'被爱是一种奢侈的幸福，但你依然是我最大的心事',
+'被爱是一种奢侈的幸福，<br>但你依然是我最大的心事',
 '因为是你，因为是我',
-'我的爱不多，只有一份，一旦付出了，就是全部了',
-'相遇，便执子之手，未来有你足矣',
-'相守，定与子偕老，回忆只许有你',
-'不怕念起，唯恐觉迟，既已执手，此生不负'
+'我的爱不多，只有一份，<br>一旦付出了，就是全部了',
+'相遇，便执子之手，<br>未来有你足矣',
+'相守，定与子偕老，<br>回忆只许有你',
+'不怕念起，唯恐觉迟，<br>既已执手，此生不负'
 ];
 var e_desc = {"txt":"&#x552F;&#x6709;&#x4F60;&#x662F;&#x6211;&#x2661;&#x4E00;&#x751F;&#x4E2D;&#x6700;&#x7F8E;&#x597D;&#x7684;&#x8BB0;&#x5FC6;"}["txt"]; 
 
@@ -485,34 +480,7 @@ function show1()
 
     setTimeout(function(){
         var word = id('word1');
-        var word_string = words[image_url_index]
-        console.log(image_url_index);
-        if(word_string != undefined)
-        {
-            console.log(word_string);
-            word_string = word_string.replace(/[\n]/ig,'');
-            
-            word.style.webkitAnimation = 'fadein 0.6s linear both';
-            var word_length = word_string.length;
-            word.style.top = "80%";
-            if(word_length < 6)
-                word.style.fontSize = "28px";
-            else
-            {
-                if(word_length > 10)
-                {
-                    word_string = insertEnter(word_string, 5);
-                    word.style.top = "75%";
-                }
-                word.style.fontSize = "25px";
-            }
-            word.innerText = word_string;
-        }
-        else
-            word.innerText = "";
-
-        image_url_index++;
-
+        wordcss(word);
     }, 1500);
 
     setTimeout(function(){
@@ -572,36 +540,7 @@ function show2()
 
     setTimeout(function(){
         var word = id('word2');
-        var word_string = words[image_url_index]
-        console.log(image_url_index);
-
-        if(word_string != undefined)
-        {
-            word_string = word_string.replace(/[\n]/ig,'');
-            
-            word.style.webkitAnimation = 'fadein 0.6s linear both';
-            word.style.top = "80%";
-            var word_length = word_string.length;
-            if(word_length < 6)
-                word.style.fontSize = "28px";
-            else
-            {
-                if(word_length > 10)
-                {
-                    word.style.top = "75%";
-                    word_string = insertEnter(word_string, 5);
-                }
-                word.style.fontSize = "25px";
-            }
-            word.innerText = word_string;
-        }
-        else
-        {
-            word.innerText = "";
-        }
-
-    image_url_index++;
-    
+        wordcss(word);
     }, 1000);
 
     setTimeout(function(){
@@ -659,34 +598,7 @@ function show3()
 
     setTimeout(function(){
         var word = id('word3');
-        var word_string = words[image_url_index]
-        console.log(image_url_index);
-
-        if(word_string != undefined)
-        {
-            word_string = word_string.replace(/[\n]/ig,'');
-            word.style.top = "80%";
-            word.style.webkitAnimation = 'fadein 0.6s linear both';
-
-            var word_length = word_string.length;
-            if(word_length < 6)
-                word.style.fontSize = "28px";
-            else
-            {
-                word.style.fontSize = "25px";
-                if(word_length > 10)
-                {
-                    word_string = insertEnter(word_string, 5);
-                    word.style.top = "75%";
-                }
-            }
-            word.innerText = word_string;
-        }
-        else
-            word.innerText = "";
-        
-        image_url_index++;
-    
+        wordcss(word);   
     }, 1000);
 
     setTimeout(function(){
@@ -753,35 +665,7 @@ function show1_1()
 
     setTimeout(function(){
         var word = id('word1');
-        var word_string = words[image_url_index]
-        console.log(image_url_index);
-
-        if(word_string != undefined)
-        {
-            word_string = word_string.replace(/[\n]/ig,'');
-            word.style.top = "80%";
-            word.style.webkitAnimation = 'fadein 0.6s linear both';
-
-            var word_length = word_string.length;
-            if(word_length < 6)
-                word.style.fontSize = "28px";
-            else
-            {
-                if(word_length > 10)
-                {
-                    word_string = insertEnter(word_string, 5);
-                    word.style.top = "75%";
-                }
-                word.style.fontSize = "25px";
-            }
-            word.innerText = word_string;
-        }
-        else
-        {
-            word.innerText = "";
-        }
-        
-        image_url_index++;
+        wordcss(word);
 
     }, 1500);
 
@@ -815,7 +699,30 @@ function setImageindex()
         step_load();
     }
 }
+function wordcss(word) {
+    var word_string = words[image_url_index];
 
+        if(word_string == undefined) {
+            word_string = words[image_url_index - 8];
+        }
+        word_string = word_string.replace(/[\n]/ig,'');
+        
+        word.style.webkitAnimation = 'fadein 0.6s linear both';
+        word.style.top = "80%";
+        var word_length = word_string.length;
+        if(word_length < 6)
+            word.style.fontSize = "28px";
+        else
+        {
+            if(word_length > 10){
+                word.style.top = "75%";
+            }
+            word.style.fontSize = "25px";
+        }
+        word.innerHTML = word_string;
+
+    image_url_index++;
+}
 call_me(load_images);
 
     </script>
