@@ -245,30 +245,13 @@ var canshow = true;
 var reshow = false;
 var delaytime=5000;
 var slider_images_url = [];
-slider_images_url.push('images/bgs.jpg');
-slider_images_url.push('images/dat.jpg');
-slider_images_url.push('images/datang.jpg');
-slider_images_url.push('images/dt.jpg');
-slider_images_url.push('images/dtz.jpg');
-slider_images_url.push('images/hys.jpg');
-slider_images_url.push('images/jdhy.jpg');
-slider_images_url.push('images/mr.jpg');
-slider_images_url.push('images/sjd.jpg');
-slider_images_url.push('images/tsg.jpg');
-slider_images_url.push('images/ys.jpg');
-slider_images_url.push('images/zlang.jpg');
-slider_images_url.push('images/zoul.jpg');
+for(var i = 0,i < 19;i ++) {
+    slider_images_url[i] = 'images/' + i + 1 + '.jpg';
+}
 
 var words = {};
 var e_desc = {"txt":""}["txt"]; 
-// var timeout0;
-// var timeout1;
-// var timeout2;
-// var timeout3;
-// var timeout4;
-// var timeout5;
-// var timeout6;
-// var timeout7;
+
 var get_pid = function(url){
     var index1 = url.indexOf("?");
     if(index1 != -1)
