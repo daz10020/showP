@@ -116,6 +116,39 @@
                 return document.getElementById(id);
             }
         }
+
+        var upload_permission = true;
+        var atkname = 'huamei';
+
+        wx.config({
+            debug     : false,
+            appId     : 'wx235301d18ac389fa',
+            timestamp : 10000,
+            nonceStr  : 'hellohuamei',
+            signature : 'fb0466ccb40b5077590bafd0e9fe760d231fe65a',
+            jsApiList : [
+                'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone', 'closeWindow', 'hideAllNonBaseMenuItem', 'showMenuItems', 'showAllNonBaseMenuItem', 'chooseImage', 'uploadImage']
+            });
+        
+        function load_init_modules() {
+            for(var i=0; i<module_inits.length; i++)
+            {
+                module_inits[i]();
+            }
+        }
+
+        function call_me(fun) {
+            module_inits.push(fun);
+        }
+
+        var ua = navigator.userAgent.toLowerCase();  
+
+        if(ua.match(/MicroMessenger/i) == 'micromessenger') {  
+            wx.ready(load_init_modules);
+        }
+        else {
+            onload = load_init_modules;
+        }
         var e_music_player = new Audio();
         
         function play_music() {
@@ -194,40 +227,8 @@
                 setTimeout(function(){objid("music_txt").style.visibility="hidden"}, 2500);
             }
         }
-        
+    call_me(create_music);
 
-        var upload_permission = true;
-        var atkname = 'huamei';
-
-        wx.config({
-            debug     : false,
-            appId     : 'wx235301d18ac389fa',
-            timestamp : 10000,
-            nonceStr  : 'hellohuamei',
-            signature : 'fb0466ccb40b5077590bafd0e9fe760d231fe65a',
-            jsApiList : [
-                'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone', 'closeWindow', 'hideAllNonBaseMenuItem', 'showMenuItems', 'showAllNonBaseMenuItem', 'chooseImage', 'uploadImage']
-            });
-        
-        function load_init_modules() {
-            for(var i=0; i<module_inits.length; i++)
-            {
-                module_inits[i]();
-            }
-        }
-
-        function call_me(fun) {
-            module_inits.push(fun);
-        }
-
-        var ua = navigator.userAgent.toLowerCase();  
-
-        if(ua.match(/MicroMessenger/i) == 'micromessenger') {  
-            wx.ready(load_init_modules);
-        }
-        else {
-            onload = load_init_modules;
-        }
     </script>
     <script type="text/javascript">
 
