@@ -118,7 +118,7 @@
         
         function play_music() {
 
-            mymusic = 'https://qnphoto.kagirl.cn/music/688042.m4a';
+            mymusic = 'music/1.mp3';
 
             e_music_player.src  = mymusic;
             e_music_player.loop = 'loop';
@@ -250,7 +250,7 @@ for(var i = 0;i < 19;i ++) {
 }
 
 var words = {};
-var e_desc = {"txt":""}["txt"]; 
+var e_desc = {"txt":"&#x552F;&#x6709;&#x4F60;&#x662F;&#x6211;&#x2661;&#x4E00;&#x751F;&#x4E2D;&#x6700;&#x7F8E;&#x597D;&#x7684;&#x8BB0;&#x5FC6;"}["txt"]; 
 
 var get_pid = function(url){
     var index1 = url.indexOf("?");
@@ -469,8 +469,8 @@ function show1()
 
     setTimeout(function(){
         var word = id('word1');
-        var word_string = words[get_pid(Onload_imgs_url[image_url_index])];
-        console.log(get_pid(Onload_imgs_url[image_url_index]));
+        var word_string = words[image_url_index]
+        console.log(image_url_index);
         if(word_string != undefined)
         {
             console.log(word_string);
@@ -556,7 +556,9 @@ function show2()
 
     setTimeout(function(){
         var word = id('word2');
-        var word_string = words[get_pid(Onload_imgs_url[image_url_index])];
+        var word_string = words[image_url_index]
+        console.log(image_url_index);
+
         if(word_string != undefined)
         {
             word_string = word_string.replace(/[\n]/ig,'');
@@ -641,7 +643,9 @@ function show3()
 
     setTimeout(function(){
         var word = id('word3');
-        var word_string = words[get_pid(Onload_imgs_url[image_url_index])];
+        var word_string = words[image_url_index]
+        console.log(image_url_index);
+
         if(word_string != undefined)
         {
             word_string = word_string.replace(/[\n]/ig,'');
@@ -733,7 +737,9 @@ function show1_1()
 
     setTimeout(function(){
         var word = id('word1');
-        var word_string = words[get_pid(Onload_imgs_url[image_url_index])];
+        var word_string = words[image_url_index]
+        console.log(image_url_index);
+
         if(word_string != undefined)
         {
             word_string = word_string.replace(/[\n]/ig,'');
